@@ -1,37 +1,38 @@
-// Daniel Shiffman
-// https://www.kadenze.com/courses/the-nature-of-code
-// http://natureofcode.com/
-// Session 1: Random Walker
 
 var w;
 
 function setup() {
-  createCanvas(640, 360);
-  // Make a Walker object
+  createCanvas(window.innerWidth, window.innerHeight);
+  //instancia del objeto
   w = new Walker();
 }
 
 function draw() {
   background(51);
-  // Update and display object
+  // llamo los metodos de la instancia
   w.update();
   w.display();
 }
 
+
+//objecto Walker con posicion, movimiento y display para dibujarlo
 function Walker() {
 
-  // Start Walker in center
-  this.pos = createVector(width / 2, height / 2);
+  // vector posiciona el objeto en medio del canvas
+  this.posicion = createVector(width / 2, height / 2);
 
   this.update = function() {
-    // Move Walker randomly
-    var vel = createVector(random(-5, 5), random(-5, 5));
-    this.pos.add(vel);
-  }
+    // el metodo
+    var velocidad = createVector(random(-5, 5), random(-5, 5));
 
+    this.posicion.add(velocidad);
+
+  }
+   
+
+  //dibuja un cirulo blanco(the Walker)
   this.display = function() {
-    // Draw Walker as circle
     fill(255);
-    ellipse(this.pos.x, this.pos.y, 48, 48);
+    ellipse(this.posicion.x, this.posicion.y, 48, 48);
   }
 }
